@@ -1,0 +1,26 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+  
+    "Description" : "JSON string",
+  
+    "Metadata" : {
+    },
+  
+    "Parameters" : {
+    },
+  
+    "Mappings" : {
+    },
+  
+    "Conditions" : {
+    },
+  
+    "Transform" : {
+    },
+  
+    "Resources" : {
+    },
+  
+    "Outputs" : {
+    }
+  }
