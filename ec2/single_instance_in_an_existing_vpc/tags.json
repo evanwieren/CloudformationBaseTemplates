@@ -1,0 +1,10 @@
+[
+    {
+      "Key": "Environment",
+      "Value": "Dev"
+    },
+    {
+      "Key": "StackTag",
+      "Value": "CFN"
+    }
+]

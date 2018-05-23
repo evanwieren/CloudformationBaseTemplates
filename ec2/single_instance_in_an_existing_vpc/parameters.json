@@ -1,0 +1,22 @@
+[
+    {
+      "ParameterKey": "InstanceName",
+      "ParameterValue": "MyDemoServer"
+    },
+    {
+      "ParameterKey": "EC2InstanceType",
+      "ParameterValue": "t2.nano"
+    },
+    {
+      "ParameterKey": "InstanceSubnet",
+      "ParameterValue": "replace_me"
+    },
+    {
+      "ParameterKey": "InstanceSecurityGroups",
+      "ParameterValue": "list,by,commas"
+    },
+    {
+      "ParameterKey": "SSHKeyName",
+      "ParameterValue": "myKey"
+    }
+]

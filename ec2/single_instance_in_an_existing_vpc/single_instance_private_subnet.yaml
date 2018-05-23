@@ -1,0 +1,57 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description:
+  Spin up an instance within an existing VPC. 
+
+  Includes security group, subnet, vpc, and can set to keep intance after removing CFN stack
+
+Parameters:
+  InstanceName: 
+    Type: String
+    Default: "NobodyGaveMeAName"
+    Description: Name of the instance that will be created
+  EC2InstanceType:
+    Type: String
+    Default: t2.nano
+    Description: Size of the instance to boot
+  InstanceSubnet:
+    Type: AWS::EC2::Subnet::Id
+    Description: Subnet that the instance will be placed in.
+  InstanceSecurityGroups:
+    Type: 'List<AWS::EC2::SecurityGroup::Id>'
+    Description: Comma separated list of security groups in which to place the EC2 instance
+  SSHKeyName:
+    Type: String
+    Description: SSH keypair used to connect to the instance
+
+Mappings:
+  RegionMap: 
+    us-east-1:
+      AMI: ami-afd15ed0
+    us-east-2:
+      AMI: i-????
+
+Resources:
+  Ec2Instance: 
+    Type: "AWS::EC2::Instance"
+    DeletionPolicy: Retain
+    Properties: 
+      Tags:
+        -
+          Key: Name
+          Value: 
+            Ref: InstanceName
+      ImageId: 
+        Fn::FindInMap: 
+          - "RegionMap"
+          - Ref: "AWS::Region"
+          - "AMI"
+      KeyName: 
+        Ref: "SSHKeyName"
+      InstanceType: 
+        Ref: "EC2InstanceType"
+      SecurityGroupIds:
+        Ref: InstanceSecurityGroups
+      SubnetId:
+        Ref: InstanceSubnet
