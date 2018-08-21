@@ -24,6 +24,8 @@ Parameters:
   SSHKeyName:
     Type: String
     Description: SSH keypair used to connect to the instance
+  Role:
+    Type: String
   AmiID:
     Type: String
 
@@ -31,7 +33,7 @@ Parameters:
 Resources:
   Ec2Instance: 
     Type: "AWS::EC2::Instance"
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
     Properties: 
       Tags:
         -
@@ -42,6 +44,8 @@ Resources:
         Ref: AmiID
       KeyName: 
         Ref: "SSHKeyName"
+      IamInstanceProfile:
+        Ref: Role
       InstanceType: 
         Ref: "EC2InstanceType"
       SecurityGroupIds:
